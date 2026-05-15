@@ -124,6 +124,7 @@ def _parse_direct_date(text: str) -> date | None:
         pass
 
     cleaned = re.sub(r"(\d+)(st|nd|rd|th)", r"\1", text)
+    cleaned = cleaned.replace(".", "")
 
     match = re.fullmatch(r"(\w+) (\d{1,2}),? (\d{4})", cleaned)
     if match is not None:
