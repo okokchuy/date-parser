@@ -19,3 +19,10 @@ def test_parse_in_days() -> None:
 
 def test_parse_days_ago() -> None:
     assert parse("3 days ago", today=date(2025, 12, 1)) == date(2025, 11, 28)
+
+def test_parse_in_one_day() -> None:
+    assert parse("in 1 day", today=date(2025, 12, 1)) == date(2025, 12, 2)
+
+
+def test_parse_one_day_ago() -> None:
+    assert parse("1 day ago", today=date(2025, 12, 1)) == date(2025, 11, 30)
