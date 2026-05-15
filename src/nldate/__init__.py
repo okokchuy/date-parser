@@ -132,6 +132,11 @@ def _parse_direct_date(text: str) -> date | None:
             return None
         return date(int(year_text), MONTHS[month_name], int(day_text))
 
+    match = re.fullmatch(r"(\d{4})/(\d{1,2})/(\d{1,2})", cleaned)
+    if match is not None:
+        year_text, month_text, day_text = match.groups()
+        return date(int(year_text), int(month_text), int(day_text))
+
     match = re.fullmatch(r"(\d{1,2})/(\d{1,2})/(\d{4})", cleaned)
     if match is not None:
         month_text, day_text, year_text = match.groups()
