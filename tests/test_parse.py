@@ -1,7 +1,11 @@
 from datetime import date
-
+import pytest
 from nldate import parse
 
+
+def test_parse_invalid_input() -> None:
+    with pytest.raises(ValueError):
+        parse("pizza time")
 
 def test_parse_today() -> None:
     assert parse("today", today=date(2025, 12, 1)) == date(2025, 12, 1)
