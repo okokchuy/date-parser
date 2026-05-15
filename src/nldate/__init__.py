@@ -81,6 +81,12 @@ def parse(s: str, today: date | None = None) -> date:
     if text == "yesterday":
         return today - timedelta(days=1)
 
+    if text == "the day after tomorrow":
+        return today + timedelta(days=2)
+
+    if text == "the day before yesterday":
+        return today - timedelta(days=2)
+
     match = re.fullmatch(r"next (\w+)", text)
     if match is not None:
         weekday_name = match.group(1)
